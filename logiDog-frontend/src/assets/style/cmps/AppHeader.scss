@@ -1,0 +1,29 @@
+.app-header {
+    min-height: 5rem;
+    background-color: $clr4;
+    nav {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 1em;
+
+        font-size: 0.8em;
+
+        .active {
+            color: $clr1;
+        }
+
+        .logo {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-inline-end: 2em;
+        }
+
+
+        button {
+            margin-inline-end: 0;
+        }
+    }
+
+   
+}
