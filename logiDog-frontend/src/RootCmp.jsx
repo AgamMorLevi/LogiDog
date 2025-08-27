@@ -1,6 +1,11 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router'
 
+    import { AppHeader } from './cmps/AppHeader'
+import { AppFooter } from './cmps/AppFooter'
+import { Dashboard } from './pages/Dashboard'
+import {ShipmentsIndex} from  './pages/ShipmentsIndex'
+import { ShipmentDetails} from './pages/ShipmentDetails'
 
 export function RootCmp() {
     return (
@@ -8,9 +13,10 @@ export function RootCmp() {
             <AppHeader />
             <main>
                 <Routes>
+                    <Route path="/" element={<Navigate to="/dashboard" replace />} />
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="shipments" element={<ShipmentsIndex />} />  
-                    <Route path="shipments/:shipmentId" element={<ShipmentDetails />} />
+                    <Route path="shipment/:shipmentId" element={<ShipmentDetails />} />
                 </Routes>
             </main>
             <AppFooter />

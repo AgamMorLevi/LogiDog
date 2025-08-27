@@ -3,14 +3,12 @@ import { useSelector } from 'react-redux'
 
 
 export function ShipmentsIndex() {
-
-   
     return (
-        <main className="Shipments-index">
+        <section className="Shipments-index">
             <header>
                 <h2>Shipments</h2>   
             </header>
 
-        </main>
+        </section>
     )
 }
