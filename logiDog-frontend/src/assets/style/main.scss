@@ -9,4 +9,18 @@
 @import "basics/layout";
 @import "basics/base";
 
+//pages
+@import "./pages/Dashboard.scss";
+@import "./pages/ShipmentDetails.scss";
+
+//cmps
+@import "./cmps/AppFooter.scss";
+@import "./cmps/AppHeader.scss";
+@import "./cmps/ShipmentFilter.scss";
+@import "./cmps/ShipmentsList.scss";
+
+
+
+
+
 

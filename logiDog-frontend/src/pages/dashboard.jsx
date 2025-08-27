@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { shipmentService } from '../services/shipment/shipment.service.local'
 import { SET_SHIPMENTS } from '../store/shipment.reducer'
 import { ShipmentFilter } from '../cmps/ShipmentFilter'
 import { ShipmentsList } from '../cmps/ShipmentsList'
-import { getDashboardSummary } from '../utils/dashboard-calculations'
-import './Dashboard.scss'
+
 
 export function Dashboard() {
     const dispatch = useDispatch()
@@ -61,11 +60,6 @@ export function Dashboard() {
         console.log('Edit shipment:', shipment.id)
     }
 
-    const summary = getDashboardSummary(shipments)
-
-    console.log('Dashboard - shipments:', shipments)
-    console.log('Dashboard - summary:', summary)
-    console.log('Dashboard - grouped shipments:', summary.grouped)
 
     if (error) {
         return (
@@ -77,6 +71,23 @@ export function Dashboard() {
                 </div>
             </div>
         )
+    }
+
+    // Compute summary from shipments
+    const summary = {
+        total: {
+            count: shipments ? shipments.length : 0,
+            atRisk: shipments ? shipments.filter(s => s.status === 'atRisk').length : 0,
+            delayed: shipments ? shipments.filter(s => s.status === 'delayed').length : 0,
+        },
+        grouped: shipments
+            ? shipments.reduce((acc, shipment) => {
+                const type = shipment.type || 'Unknown'
+                if (!acc[type]) acc[type] = []
+                acc[type].push(shipment)
+                return acc
+            }, {})
+            : {},
     }
 
     return (

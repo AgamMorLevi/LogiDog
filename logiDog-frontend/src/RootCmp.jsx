@@ -4,7 +4,6 @@ import { Routes, Route, Navigate } from 'react-router'
     import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { Dashboard } from './pages/Dashboard'
-import {ShipmentsIndex} from  './pages/ShipmentsIndex'
 import { ShipmentDetails} from './pages/ShipmentDetails'
 
 export function RootCmp() {
@@ -15,7 +14,6 @@ export function RootCmp() {
                 <Routes>
                     <Route path="/" element={<Navigate to="/dashboard" replace />} />
                     <Route path="dashboard" element={<Dashboard />} />
-                    <Route path="shipments" element={<ShipmentsIndex />} />  
                     <Route path="shipment/:shipmentId" element={<ShipmentDetails />} />
                 </Routes>
             </main>
